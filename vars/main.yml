@@ -1,0 +1,5 @@
+---
+two_network_interface_config_path: "/etc/sysconfig/network-scripts"
+two_nework_interfaces_packages:
+  - "initscripts"
+  - "NetworkManager-config-routing-rules"

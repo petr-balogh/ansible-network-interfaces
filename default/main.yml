@@ -1,0 +1,21 @@
+---
+# pass these variables in playbook vars to overwrite default values
+two_network_interfaces:
+  "eth0":
+    "mode": "auto"
+    "ip": null
+    "network": null
+    "prefix": null
+    "gw": null
+    "dns1": null
+    "dns2": null
+    "tab": "1"
+    "priority": "200"
+  "eth1":
+    "mode": "auto"
+    "ip": null
+    "network": null
+    "prefix": null
+    "gw": null
+    "tab": "1"
+    "priority": "300"

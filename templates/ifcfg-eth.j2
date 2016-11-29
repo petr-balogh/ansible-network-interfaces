@@ -1,0 +1,15 @@
+TYPE=Ethernet
+BOOTPROTO=static
+DEFROUTE=yes
+NAME={{ item.key }}
+DEVICE={{ item.key }}
+IPADDR={{ item.value.ip }}
+GATEWAY={{ item.value.gw }}
+PREFIX={{ item.value.prefix }}
+ONBOOT=yes
+{% if item.value.dns1 is defined %}
+DNS1={{ item.value.dns1 }}
+{% endif %}
+{% if item.value.dns2 is defined %}
+DNS2={{ item.value.dns2 }}
+{% endif %}

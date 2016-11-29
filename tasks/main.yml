@@ -1,0 +1,35 @@
+---
+- name: "Install packages"
+  yum:
+    name: "{{ item }}"
+    state: "installed"
+  with_items: "{{ two_nework_interfaces_packages | list }}"
+
+- name: "Set network"
+  template:
+    src: "ifcfg-eth.j2"
+    dest: "{{ two_network_interface_config_path }}/ifcfg-{{ item.key }}"
+  with_dict: "{{ two_network_interfaces }}"
+
+- name: "Add rules"
+  template:
+    src: "rule-eth.j2"
+    dest: "{{ two_network_interface_config_path }}/rule-{{ item.key }}"
+  with_dict: "{{ two_network_interfaces }}"
+
+- name: "Add routes"
+  template:
+    src: "route-eth.j2"
+    dest: "{{ two_network_interface_config_path }}/route-{{ item.key }}"
+  with_dict: "{{ two_network_interfaces }}"
+
+- name: "Enable NetworkManager-dispatcher services"
+  service:
+    name: "NetworkManager-dispatcher"
+    enabled: "yes"
+    state: "started"
+
+- name: "Restart network"
+  service:
+    name: "network"
+    state: "restarted"
