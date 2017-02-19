@@ -1,5 +1,5 @@
 ---
-two_network_interface_config_path: "/etc/sysconfig/network-scripts"
-two_nework_interfaces_packages:
+ansible_network_interfaces_config_path: "/etc/sysconfig/network-scripts"
+ansible_network_interfaces_packages:
   - "initscripts"
-  - "NetworkManager-config-routing-rules"
+  - "NetworkManager-dispatcher-routing-rules"
